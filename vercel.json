@@ -1,20 +1,11 @@
 {
     "version": 2,
-    "builds": [
-        {
-            "src": "api/index.php",
-            "use": "vercel-php@0.6.0",
-            "config": {
-                "includeFiles": {
-                    "/usr/lib64/libssl.so.10": "/libssl.so.10"
-                }
-            }
-        }
-    ],
+    "framework": null,
+    "functions": {
+        "api/index.php": { "runtime": "vercel-php@0.6.0" }
+    },
     "routes": [
-        {
-            "src": "/(.*)",
-            "dest": "api/index.php"
-        }
+        { "src": "/build/(.*)", "dest": "/public/build/" },
+        { "src": "/(.*)", "dest": "/api/index.php" }
     ]
 }
